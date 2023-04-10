@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class Convite {
+    int id;
     String nome;
     String email;
     boolean vaiParticipar = false;
