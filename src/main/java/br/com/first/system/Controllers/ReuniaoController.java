@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.first.system.Models.Convite;
+
 @Controller
 @RequestMapping("/reuniao")
 public class ReuniaoController {
