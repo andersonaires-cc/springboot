@@ -12,7 +12,7 @@ import br.com.first.system.Models.Convite;
 @RequestMapping("/reuniao")
 public class ReuniaoController {
     
-    @GetMapping
+    @GetMapping("/form")
     public String form(){
         return "reuniao/form";
     }
