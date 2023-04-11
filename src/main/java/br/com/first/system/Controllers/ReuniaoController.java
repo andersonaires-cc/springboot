@@ -17,6 +17,6 @@ public class ReuniaoController {
 
     @PostMapping
     public String form(Convite convite){
-        return "reuniao/form";
+        return "redirect:/reuniao/form";
     }
 }
