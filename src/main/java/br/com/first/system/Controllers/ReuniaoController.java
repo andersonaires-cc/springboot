@@ -6,19 +6,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import br.com.first.system.Models.Convite;
+import br.com.first.system.Dtos.ConviteDTO;
+import br.com.first.system.Repositories.ConvitesRepository;
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("/reuniao")
+@RequiredArgsConstructor
 public class ReuniaoController {
-    
+
+    final ConvitesRepository repository;
+
     @GetMapping("/form")
     public String form(){
         return "reuniao/form";
     }
 
     @PostMapping
-    public String form(Convite convite){
+    public String form(ConviteDTO convite){
+        repository.convites.add(convite.Build());
         return "redirect:/reuniao/form";
     }
 }
