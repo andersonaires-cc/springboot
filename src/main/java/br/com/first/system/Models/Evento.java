@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class Evento {
+    int id;
     String nomeEvento;
     Date diaEvento;
     String senhaEntrada;
