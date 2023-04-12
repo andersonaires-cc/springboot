@@ -2,6 +2,7 @@ package br.com.first.system.Controllers;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,9 +25,15 @@ public class ReuniaoController {
         return "reuniao/form";
     }
 
+    @GetMapping
+    public String listAll(Model model){
+        model.addAttribute("convites", repository.convites);
+        return "/reuniao/listAll";
+    }
+
     @PostMapping
     public String form(ConviteDTO convite){
         repository.convites.add(convite.Build());
-        return "redirect:/reuniao/form";
+        return "redirect:/reuniao";
     }
 }
