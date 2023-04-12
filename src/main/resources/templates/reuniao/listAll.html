@@ -7,8 +7,10 @@
     <title>Listar Todos</title>
 </head>
 <body>
+    <h3>Listar Todos</h3>
     <ul>
         <li th:each="convite: ${convites}" th:text="${convite.nome}"></li>
     </ul>
+    <a href="../reuniao/form" >Ir para o form</a>
 </body>
 </html>
