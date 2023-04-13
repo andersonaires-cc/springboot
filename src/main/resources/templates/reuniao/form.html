@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
     <title>Document</title>
 </head>
 <body>
@@ -11,27 +12,56 @@
         <div>
             <label for="cpf">CPF:</label> <br>
             <input type="text" th:field="*{cpf}">
-            <small th:if="${#fields.hasErrors('cpf')}"> Erro CPF</small>
+            <br>
+            <small
+                class="error"
+                th:if="${#fields.hasErrors('cpf')}"
+                th:errors="*{cpf}">
+            </small>
         </div>
 
         <div>
             <label for="nome">Nome:</label> <br>
             <input type="text" th:field="*{nome}">
+            <br>
+            <small
+                class="error"
+                th:if="${#fields.hasErrors('nome')}"
+                th:errors="*{nome}">
+            </small>
         </div>
 
         <div>
             <label for="email">E-mail:</label> <br>
             <input type="text" th:field="*{email}">
+            <br>
+            <small
+                class="error"
+                th:if="${#fields.hasErrors('email')}" 
+                th:errors="*{email}">
+            </small>
         </div>
         
         <div>
             <label for="nomeEvento">Nome Evento:</label> <br>
             <input type="text" th:field="*{nomeEvento}">
+            <br>
+            <small
+                class="error"
+                th:if="${#fields.hasErrors('nomeEvento')}" 
+                th:errors="*{nomeEvento}">
+            </small>
         </div>
 
         <div>
             <label for="diaEvento">Dia do Evento</label> <br>
             <input type="date" th:field="*{dtEvento}">
+            <br>
+            <small
+                class="error"
+                th:if="${#fields.hasErrors('dtEvento')}" 
+                th:errors="*{dtEvento}">
+            </small>
         </div>
 
         <div>

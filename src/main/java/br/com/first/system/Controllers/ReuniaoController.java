@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,12 +34,11 @@ public class ReuniaoController {
     }
 
     @PostMapping
-    public String form(@Valid ConviteDTO convite, BindingResult br, Model model){
+    public String form(@Valid @ModelAttribute("convite") ConviteDTO convite, BindingResult br){
         
         if( br.hasErrors() )
         {
-            model.addAttribute("convite", convite);
-            return "redirect:/reuniao/form";
+            return "/reuniao/form";
         }
 
         repository.convites.add(convite.Build());
