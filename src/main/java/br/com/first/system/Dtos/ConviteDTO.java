@@ -1,9 +1,5 @@
 package br.com.first.system.Dtos;
 
-import java.util.Date;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import br.com.first.system.Models.Convite;
 import lombok.Data;
 
