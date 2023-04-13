@@ -9,7 +9,11 @@
 <body>
     
     <ul>
-        <li th:each="convite : ${convites}" th:text="${convite.nome}"></li>
+        <li th:each="convite : ${convites}">
+            <span th:text="${convite.nome}"></span>
+            ( <span th:text="${convite.cpf}"></span> )
+            <span th:text="${convite.email}"></span>
+        </li>
     </ul>    
 
 </body>
