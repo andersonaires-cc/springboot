@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Todos</title>
+</head>
+<body>
+    <h3>Listar Todos</h3>
+    <ul th:if="${convite.nome} == 'Anderson'">
+        <li th:each="convite: ${convites}" th:text="${convite.email}"></li>
+    </ul>
+    <a href="../reuniao/form" >Ir para o form</a>
+</body>
+</html>
