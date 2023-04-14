@@ -3,6 +3,7 @@ package br.com.first.system.Controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.first.system.Dtos.ConviteDTO;
 import br.com.first.system.Repositories.ConvitesRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Controller
@@ -21,7 +23,8 @@ public class ReuniaoController {
     final ConvitesRepository repository;
 
     @GetMapping("/form")
-    public String form(){
+    public String form(Model model){
+        model.addAttribute("convite", new ConviteDTO());
         return "reuniao/form";
     }
 
@@ -32,7 +35,13 @@ public class ReuniaoController {
     }
 
     @PostMapping
-    public String form(ConviteDTO convite){
+    public String form(@Valid ConviteDTO convite, BindingResult Br, Model model){
+        
+        if(Br.hasErrors()){
+            model.addAttribute("convite", convite);
+            return "redirect:/reuniao";
+        }
+        
         repository.convites.add(convite.Build());
         return "redirect:/reuniao";
     }
