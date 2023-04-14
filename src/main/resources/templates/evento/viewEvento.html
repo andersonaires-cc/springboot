@@ -7,10 +7,14 @@
     <title>Listar Todos</title>
 </head>
 <body>
-    <h3>Listar Todos</h3>
-    <ul th:if="${convite.nome} == 'Anderson'">
-        <li th:each="convite: ${convites}" th:text="${convite.email}"></li>
-    </ul>
+    <h3>Encontrado</h3>
+
+    <div th:if="${convite.nome} = 'Anderson'">
+        <ul>
+            <li th:each="convite: ${convites}" th:text="${convite.nome}"></li>
+        </ul>
+    </div>
+
     <a href="../reuniao/form" >Ir para o form</a>
 </body>
 </html>

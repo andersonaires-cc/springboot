@@ -9,14 +9,14 @@ import org.springframework.ui.Model;
 
 
 @Controller
-
 public class EventoController {
     
-    @Autowired ConvitesRepository repository;
+    @Autowired
+    ConvitesRepository repository;
 
     @GetMapping
-    public String specificEmail(Model model){
+    public String viewEvento(Model model){
         model.addAttribute("convites", repository.convites);
-        return "/reuniao/viewEvento";
+        return "/evento/viewEvento";
     }
 }
