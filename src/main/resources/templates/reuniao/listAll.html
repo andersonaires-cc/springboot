@@ -14,7 +14,7 @@
             ( <span th:text="${convite.cpf}"></span> )
             <span th:text="${convite.email}"></span>
             <span><button>Delete</button></span>
-            <span><button>Edit</button></span>
+            <span><button><a th:href="@{/reuniao/update/} + ${convite.id}">Edit</a></button></span>
         </li>
     </ul>    
 
