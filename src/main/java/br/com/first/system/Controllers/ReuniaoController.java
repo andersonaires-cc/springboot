@@ -82,6 +82,7 @@ public class ReuniaoController {
             current.setNome(convite.getNome());
             current.setCpf(convite.getCpf());
             current.setEmail(convite.getEmail());
+            current.setNomeEvento(convite.getNomeEvento());
         }else {
             repository.convites.add(convite.Build());
         }

@@ -8,5 +8,6 @@ public class Convite {
     String nome;
     String email;
     String cpf;
+    String nomeEvento;
     boolean vaiParticipar = false;
 }

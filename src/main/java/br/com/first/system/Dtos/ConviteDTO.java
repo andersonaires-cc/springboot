@@ -47,6 +47,7 @@ public class ConviteDTO{
         convite.setNome(nome);
         convite.setEmail(email);
         convite.setCpf(cpf);
+        convite.setNomeEvento(nomeEvento);
 
         return convite;
     }
@@ -57,6 +58,7 @@ public class ConviteDTO{
         resp.setEmail(convite.getEmail());
         resp.setCpf(convite.getCpf());
         resp.setId(convite.getId());
+        resp.setNomeEvento(convite.getNomeEvento());
         return resp;
     }
 }
