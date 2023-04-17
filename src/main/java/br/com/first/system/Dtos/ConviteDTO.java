@@ -20,6 +20,7 @@ public class ConviteDTO{
     @NotBlank
     String nome;
     
+    @NotBlank
     @Email
     String email;
 

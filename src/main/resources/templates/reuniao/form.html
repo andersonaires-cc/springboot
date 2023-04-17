@@ -4,33 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
     <title>Document</title>
 </head>
 <body>
-    <form action="/reuniao" method="post">
+    <form action="/reuniao" method="post" th:object="${convite}">
         <div>
             <label for="cpf">CPF:</label> <br>
-            <input type="text" name="cpf" id="cpf">
+            <input type="text" th:fiels="*{cpf}">
+            <small th:if="${#fields.hasErrors('cpf')}">Erro CPF</small>
         </div>
 
         <div>
             <label for="nome">Nome:</label> <br>
-            <input type="text" name="nome" id="nome">
+            <input type="text" th:field="*{nome}">
         </div>
 
         <div>
             <label for="email">E-mail:</label> <br>
-            <input type="text" name="email" id="email">
+            <input type="text" th:field="*{email}">
         </div>
         
         <div>
             <label for="nomeEvento">Nome Evento:</label> <br>
-            <input type="text" name="nomeEvento" id="nomeEvento">
+            <input type="text" th:field="*{nomeEvento}">
         </div>
 
         <div>
             <label for="dtEvento">Dia do Evento</label> <br>
-            <input type="date" name="dtEvento" id="dtEvento">
+            <input type="date" th:field="*{dtEvento}">
         </div>
 
         <div>

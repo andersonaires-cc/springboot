@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
-
 import br.com.first.system.Dtos.ConviteDTO;
 import br.com.first.system.Repositories.ConvitesRepository;
 import jakarta.validation.Valid;
@@ -35,11 +34,11 @@ public class ReuniaoController {
     }
 
     @PostMapping
-    public String form(@Valid ConviteDTO convite, BindingResult Br, Model model){
+    public String form(@Valid ConviteDTO convite, BindingResult br, Model model){
         
-        if(Br.hasErrors()){
+        if(br.hasErrors()){
             model.addAttribute("convite", convite);
-            return "redirect:/reuniao";
+            return "redirect:/reuniao/form";
         }
         
         repository.convites.add(convite.Build());
