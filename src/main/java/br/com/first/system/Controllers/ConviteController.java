@@ -15,29 +15,32 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.first.system.Dtos.ConviteDTO;
 import br.com.first.system.Models.Convite;
+import br.com.first.system.Models.Evento;
 import br.com.first.system.Repositories.ConvitesRepository;
-import br.com.first.system.routes.Routes.Reuniao;
+import br.com.first.system.Repositories.EventoRepository;
+import br.com.first.system.routes.Routes;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping(Reuniao.BASE)
+@RequestMapping(Routes.Convite.BASE)
 @RequiredArgsConstructor
-public class ReuniaoController {
+public class ConviteController {
 
     final ConvitesRepository repository;
+    final EventoRepository eventoRepository;
 
     @ModelAttribute
     public void addAttributes(Model model){
-        model.addAttribute("formAction", Reuniao.BASE);
+        model.addAttribute("formAction", Routes.Convite.BASE);
     }
 
-    @GetMapping(Reuniao.FORM)
+    @GetMapping(Routes.Convite.FORM)
     public String form( @ModelAttribute("convite") ConviteDTO convite ){
-        return "reuniao/form";
+        return "convite/form";
     }
 
-    @GetMapping(Reuniao.UPDATE)
+    @GetMapping(Routes.Convite.UPDATE)
     public String update( @PathVariable int id, RedirectAttributes ra ){
 
         Optional<Convite> toupdate = 
@@ -52,16 +55,16 @@ public class ReuniaoController {
                     toupdate.get()
                 ) 
             );
-            return "redirect:" + Reuniao.BASE + Reuniao.FORM;
+            return "redirect:" + Routes.Convite.BASE + Routes.Convite.FORM;
         }
 
-        return "redirect:" + Reuniao.BASE;
+        return "redirect:" + Routes.Convite.BASE;
     }
 
     @GetMapping
     public String listAll(Model model){
             model.addAttribute("convites", repository.findAll());
-            return "/reuniao/listall";
+            return "/convite/listall";
     }
 
     @PostMapping
@@ -69,9 +72,13 @@ public class ReuniaoController {
         
         if( br.hasErrors() )
         {
-            return "/reuniao/form";
+            return "/convite/form";
         }
 
+        Optional<Evento> evento =
+        eventoRepository.findById(convite.getNomeEvento());
+
+        
         Optional<Convite> currentOpt =
         repository.findById(convite.getId());
 
@@ -81,10 +88,14 @@ public class ReuniaoController {
             current.setCpf(convite.getCpf());
             current.setEmail(convite.getEmail());
             current.setNomeEvento(convite.getNomeEvento());
+            current.setEvento(evento.get());
+            repository.save(current);
         }else {
-            repository.save(convite.Build());
+            Convite toSave = convite.Build();
+            toSave.setEvento(evento.get());
+            repository.save(toSave);
         }
 
-        return "redirect:/reuniao";
+        return "redirect:/convite";
     }
 }

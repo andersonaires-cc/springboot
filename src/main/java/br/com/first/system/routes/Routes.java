@@ -2,8 +2,8 @@ package br.com.first.system.routes;
 
 public final class Routes {
     
-    public final class Reuniao {
-        public static final String BASE = "/reuniao";
+    public final class Convite {
+        public static final String BASE = "/convite";
         public static final String FORM = "/form";
         public static final String UPDATE = "/update/{id}";
     }

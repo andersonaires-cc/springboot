@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.stereotype.Component;
 
 import br.com.first.system.Models.Convite;
+import br.com.first.system.Validators.EventoExists.EventoExists;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -33,7 +34,7 @@ public class ConviteDTO{
     @CPF
     String cpf;
 
-    @NotBlank
+    @NotBlank @EventoExists
     String nomeEvento;
 
     @NotNull
