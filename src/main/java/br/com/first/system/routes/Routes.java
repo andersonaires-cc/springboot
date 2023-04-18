@@ -8,4 +8,8 @@ public final class Routes {
         public static final String UPDATE = "/update/{id}";
     }
 
+    public final class Evento {
+        public static final String BASE = "/evento";
+        public static final String FORM = "/form";
+    }
 }

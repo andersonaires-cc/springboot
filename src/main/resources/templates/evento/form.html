@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form th:action="@{${formAction}}" method="POST" th:object="${evento}">
+
+        <div>
+            <label for="nomeEvento">Nome do Evento: </label>
+            <br>
+            <input type="text" th:field="*{nomeEvento}">
+            <br>
+            <small 
+                class="error"
+                th:if="${#fields.hasErrors('nomeEvento')}" 
+                th:errors="*{nomeEvento}">
+            </small>
+        </div>
+        <br>
+
+        <div>
+            <label for="senhaEntrada">Senha da Entrada: </label>
+            <br>
+            <input type="text" th:field="*{senhaEntrada}">
+            <br>
+            <small 
+                class="error"
+                th:if="${#fields.hasErrors('senhaEntrada')}" 
+                th:errors="*{senhaEntrada}">
+            </small>
+        </div>
+        <br>
+        
+        <div>
+            <label for="diaEvento">Dia do Evento: </label>
+            <br>
+            <input type="date" th:field="*{diaEvento}">
+            <br>
+            <small 
+                class="error"
+                th:if="${#fields.hasErrors('diaEvento')}" 
+                th:errors="*{diaEvento}">
+            </small>
+        </div>
+        <br>
+        <button type="submit">Criar</button>
+    </form>
+</body>
+</html>

@@ -11,7 +11,7 @@ public class Convite {
     
     @Id @GeneratedValue
     int id = 0;
-    
+
     String nome;
     String email;
     String cpf;

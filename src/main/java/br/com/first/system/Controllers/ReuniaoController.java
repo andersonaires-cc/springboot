@@ -27,12 +27,10 @@ public class ReuniaoController {
 
     final ConvitesRepository repository;
 
-
     @ModelAttribute
     public void addAttributes(Model model){
         model.addAttribute("formAction", Reuniao.BASE);
     }
-
 
     @GetMapping(Reuniao.FORM)
     public String form( @ModelAttribute("convite") ConviteDTO convite ){
@@ -43,7 +41,7 @@ public class ReuniaoController {
     public String update( @PathVariable int id, RedirectAttributes ra ){
 
         Optional<Convite> toupdate = 
-            repository.GetConviteById(id);
+            repository.findById(id);
 
         if( toupdate.isPresent() ){
 
@@ -62,8 +60,8 @@ public class ReuniaoController {
 
     @GetMapping
     public String listAll(Model model){
-            model.addAttribute("convites", repository.convites);
-            return "/reuniao/listAll";
+            model.addAttribute("convites", repository.findAll());
+            return "/reuniao/listall";
     }
 
     @PostMapping
@@ -75,7 +73,7 @@ public class ReuniaoController {
         }
 
         Optional<Convite> currentOpt =
-            repository.GetConviteById(convite.getId());
+        repository.findById(convite.getId());
 
         if ( currentOpt.isPresent() ){
             Convite current = currentOpt.get();
@@ -84,7 +82,7 @@ public class ReuniaoController {
             current.setEmail(convite.getEmail());
             current.setNomeEvento(convite.getNomeEvento());
         }else {
-            repository.convites.add(convite.Build());
+            repository.save(convite.Build());
         }
 
         return "redirect:/reuniao";
