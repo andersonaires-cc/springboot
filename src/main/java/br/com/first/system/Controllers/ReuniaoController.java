@@ -35,7 +35,7 @@ public class ReuniaoController {
     }
 
     @PostMapping
-    public String form(@Valid @ModelAttribute("convite") ConviteDTO convite, BindingResult br, Model model){
+    public String form(@Valid @ModelAttribute("convite") ConviteDTO convite, BindingResult br){
         
         if(br.hasErrors()){
             return "/reuniao/form";
