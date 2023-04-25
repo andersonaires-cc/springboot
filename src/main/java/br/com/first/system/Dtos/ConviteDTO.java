@@ -4,8 +4,10 @@ package br.com.first.system.Dtos;
 import java.util.Date;
 
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.stereotype.Component;
 
 import br.com.first.system.Models.Convite;
 import jakarta.validation.constraints.Email;
@@ -15,7 +17,12 @@ import lombok.Data;
 
 
 @Data
+@Component
+@Scope("prototype")
 public class ConviteDTO{
+
+    @NotNull
+    Integer id =0;
 
     @NotBlank
     String nome;
@@ -37,12 +44,23 @@ public class ConviteDTO{
 
     public Convite Build(){
         Convite convite = new Convite();
-
+        convite.setId(0);
         convite.setNome(nome);
         convite.setEmail(email);
         convite.setCpf(cpf);
 
         return convite;
+    }
+
+    public static ConviteDTO of(Convite convite){
+        ConviteDTO resp = new ConviteDTO();
+
+        resp.setNome(convite.getNome());
+        resp.setCpf(convite.getCpf());
+        resp.setEmail(convite.getEmail());
+        resp.setId(convite.getId());
+
+        return resp;
     }
 }
 

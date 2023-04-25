@@ -15,28 +15,45 @@
             <small class="error" 
                     th:if="${#fields.hasErrors('cpf')}"
                     th:errors="*{cpf}">
-                    Erro CPF
             </small>
         </div>
 
         <div>
             <label for="nome">Nome:</label> <br>
             <input type="text" th:field="*{nome}">
+            <small class="error" 
+                th:if="${#fields.hasErrors('nome')}"
+                th:errors="*{nome}">
+                Erro Nome
+            </small>
         </div>
 
         <div>
             <label for="email">E-mail:</label> <br>
             <input type="text" th:field="*{email}">
+            <small class="error" 
+                th:if="${#fields.hasErrors('email')}"
+                th:errors="*{email}">
+                Erro CPF
+            </small>            
         </div>
         
         <div>
             <label for="nomeEvento">Nome Evento:</label> <br>
             <input type="text" th:field="*{nomeEvento}">
+            <small class="error" 
+                    th:if="${#fields.hasErrors('nomeEvento')}"
+                    th:errors="*{nomeEvento}">
+            </small>            
         </div>
 
         <div>
             <label for="dtEvento">Dia do Evento</label> <br>
             <input type="date" th:field="*{dtEvento}">
+            <small class="error" 
+                    th:if="${#fields.hasErrors('dtEvento')}"
+                    th:errors="*{dtEvento}">
+            </small>            
         </div>
 
         <div>
