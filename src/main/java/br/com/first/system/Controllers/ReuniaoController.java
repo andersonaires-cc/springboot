@@ -27,12 +27,15 @@ public class ReuniaoController {
     
     final ConvitesRepository repository;
 
-    @GetMapping(Reuniao.FORM)
-    public String form(@ModelAttribute("convite") ConviteDTO convite,Model model){
-        model.addAttribute("FormAction", Reuniao.BASE);
-        return "reuniao/form";
+    @ModelAttribute
+    public void ModelAttribute(Model model){
+        model.addAttribute("formAction", Reuniao.BASE);
     }
 
+    @GetMapping(Reuniao.FORM)
+    public String form( @ModelAttribute("convite") ConviteDTO convite ){
+        return "reuniao/form";
+    }
 
     @GetMapping(Reuniao.UPDATE)
     public String update(@PathVariable int id, RedirectAttributes ra){
@@ -41,7 +44,9 @@ public class ReuniaoController {
         if( toupdate.isPresent() ){
 
 
-            ra.addFlashAttribute("convite", ConviteDTO.of(toupdate.get()) );
+            ra.addFlashAttribute(
+            "convite", 
+            ConviteDTO.of(toupdate.get()) );
             return "redirect:" + Reuniao.BASE + Reuniao.FORM;
         }
 
