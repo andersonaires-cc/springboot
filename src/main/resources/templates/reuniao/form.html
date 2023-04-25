@@ -8,7 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/reuniao" method="post" th:object="${convite}">
+    <form th:action="@{${formAction}}" method="post" th:object="${convite}">
+        <input type="hidden" th:field="*{id}">
         <div>
             <label for="cpf">CPF:</label> <br>
             <input type="text" th:fiels="*{cpf}">
